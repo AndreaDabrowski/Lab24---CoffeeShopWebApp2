@@ -74,7 +74,7 @@ namespace CoffeeShop.Controllers
             ViewBag.EditedItem = ItemToDelete;
 
             //ViewBag.Message = "Edited!";
-
+            
             return View();
         }
         public ActionResult AddItem(Item NewItem)//crud
@@ -94,7 +94,7 @@ namespace CoffeeShop.Controllers
                 Item ItemToUpdate = SaveORM.Items.Find(UpdatedItem.i_name);
                 SaveORM.Entry(SaveORM.Items.Find(UpdatedItem.i_name)).CurrentValues.SetValues(UpdatedItem);
                 SaveORM.SaveChanges();
-                RedirectToAction("Admin");
+                return RedirectToAction("Admin");
             }
             //ViewBag.Message = "Saved Item!";
             return View("Admin");

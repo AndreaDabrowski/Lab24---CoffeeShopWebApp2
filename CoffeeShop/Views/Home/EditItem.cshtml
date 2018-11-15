@@ -9,7 +9,8 @@
     <!--onsubmit="validForm(this.form)">-->
 
     <label class="control-label">
-        <input type="text" input type="hidden" name="i_name" class="form-control" placeholder="Item Name" value="@ViewBag.EditedItem.i_name"/><!--Eventually add viewbags as placeholders-->
+        <input type="text" name="i_name" class="form-control" placeholder="Item Name" disabled value="@ViewBag.EditedItem.i_name" />
+        <input type="hidden" name="i_name" value="@ViewBag.EditedItem.i_name"/>
     </label> <br />
     <label class="control-label">
         <input type="text" name="i_description" class="form-control" placeholder="Description" value="@ViewBag.EditedItem.i_description"/>
