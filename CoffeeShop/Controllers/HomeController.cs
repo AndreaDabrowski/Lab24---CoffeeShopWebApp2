@@ -59,17 +59,21 @@ namespace CoffeeShop.Controllers
             Item ItemToDelete = DeleteORM.Items.Find(i_name);
             DeleteORM.Items.Remove(ItemToDelete);
             DeleteORM.SaveChanges();
-            ViewBag.Message = "Deleted!";
+            ViewBag.Message = "Item Deleted!";
 
-            return View();
+            return View("Admin");
         }
         public ActionResult EditItem(string i_name)//crud
         {
             CoffeeShopDBEntities EditORM = new CoffeeShopDBEntities();
             Item ItemToDelete = EditORM.Items.Find(i_name);
-           
+            //CoffeeShopDBEntities UpdatedEditORM = new CoffeeShopDBEntities();
+            //Item UpdatedItem = UpdatedEditORM.Items
+            //ItemToDelete.i_name = "Hello";
+            //ItemToDelete.
+            ViewBag.EditedItem = ItemToDelete;
 
-            ViewBag.Message = "Edited!";
+            //ViewBag.Message = "Edited!";
 
             return View();
         }
@@ -80,21 +84,21 @@ namespace CoffeeShop.Controllers
             AddORM.SaveChanges();
             //ViewBag.AddMessage = "Added Item!";
 
-            return View();
+            return View("Admin");
         }
-        public ActionResult SaveChanges(Item UpdatedItem)//crud
+        public ActionResult SaveEditItem(Item UpdatedItem)//crud
         {
-            CoffeeShopDBEntities SaveORM = new CoffeeShopDBEntities();
-     
-            Item ItemToUpdate = SaveORM.Items.Find(UpdatedItem.i_name);
-
-            ViewBag.Message = "Saved Item!";
-
-            return View();
+            if (ModelState.IsValid)
+            {
+                CoffeeShopDBEntities SaveORM = new CoffeeShopDBEntities();
+                Item ItemToUpdate = SaveORM.Items.Find(UpdatedItem.i_name);
+                SaveORM.Entry(SaveORM.Items.Find(UpdatedItem.i_name)).CurrentValues.SetValues(UpdatedItem);
+                SaveORM.SaveChanges();
+                RedirectToAction("Admin");
+            }
+            //ViewBag.Message = "Saved Item!";
+            return View("Admin");
         }
-
-        
-
     }
 }
         /*public ActionResult AddUser(UserInput newUser)

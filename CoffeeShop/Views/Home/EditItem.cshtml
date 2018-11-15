@@ -5,3 +5,20 @@
 
 <h2>Edit</h2>
 
+<form action="/Home/SaveEditItem" method="post" id="FormEdit">
+    <!--onsubmit="validForm(this.form)">-->
+
+    <label class="control-label">
+        <input type="text" input type="hidden" name="i_name" class="form-control" placeholder="Item Name" value="@ViewBag.EditedItem.i_name"/><!--Eventually add viewbags as placeholders-->
+    </label> <br />
+    <label class="control-label">
+        <input type="text" name="i_description" class="form-control" placeholder="Description" value="@ViewBag.EditedItem.i_description"/>
+    </label> <br />
+    <label class="control-label">
+        <input type="text" name="i_price" class="form-control" placeholder="Price" Value="@ViewBag.EditedItem.i_price"/>
+    </label> <br />
+    <label class="control-label">
+        <input type="text" name="i_quantity" class="form-control" placeholder="Quantity" value="@ViewBag.EditedItem.i_quantity"/>
+    </label> <br />
+    <input type="submit" value="Edit Item" class="btn-default" />
+</form>
