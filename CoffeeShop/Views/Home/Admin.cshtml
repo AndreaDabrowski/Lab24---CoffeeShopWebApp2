@@ -4,7 +4,7 @@
 }
 
 <h2>Admin</h2>
-
+@ViewBag.AddedItem
 <a href="/Home/AddItem">Add New Item</a>
 <table border="1" class="table">
     <!--class allows you to manipulate with JS-->
@@ -25,7 +25,7 @@
             <td><a href="/Home/DeleteItem?i_name=@item.i_name" onclick="return ConfirmDelete();">Delete Item</a></td>
         </tr>
     }
-    
+
 
 </table>
 

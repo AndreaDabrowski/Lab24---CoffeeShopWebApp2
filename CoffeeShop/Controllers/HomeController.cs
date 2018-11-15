@@ -53,6 +53,20 @@ namespace CoffeeShop.Controllers
             ViewBag.AddedUser = "User was successfully added";
             return View("Index");
         }
+        public ActionResult AddNewItem(Item NewItem)//crud
+        {
+            CoffeeShopDBEntities AddORM = new CoffeeShopDBEntities();
+            AddORM.Items.Add(NewItem);
+            AddORM.SaveChanges();
+            //ViewBag.SendDB = AddORM.Items.ToList<Item>();
+            ViewBag.AddedItem = "Item was successfully added";
+            return RedirectToAction("Admin");
+            //return View("Admin");
+        }
+        public ActionResult AddItem()
+        {
+            return View();
+        }
         public ActionResult DeleteItem(string i_name)//crud
         {
             CoffeeShopDBEntities DeleteORM = new CoffeeShopDBEntities();
@@ -76,15 +90,6 @@ namespace CoffeeShop.Controllers
             //ViewBag.Message = "Edited!";
             
             return View();
-        }
-        public ActionResult AddItem(Item NewItem)//crud
-        {
-            CoffeeShopDBEntities AddORM = new CoffeeShopDBEntities();
-            AddORM.Items.Add(NewItem);
-            AddORM.SaveChanges();
-            //ViewBag.AddMessage = "Added Item!";
-
-            return View("Admin");
         }
         public ActionResult SaveEditItem(Item UpdatedItem)//crud
         {
