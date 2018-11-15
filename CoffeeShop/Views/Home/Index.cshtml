@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!--<p>font family: </p>-->
+<h1>Welome to GC Coffee Shop!</h1>
+<h2><a href="/Home/Register">Register!</a></h2><br />
+<h2>@ViewBag.AddedUser</h2> <br />
+
+<h2>Item List</h2>
+
+        <table border="1" class="table">
+            <!--class allows you to manipulate with JS-->
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            @foreach (var item in ViewBag.SendDB)
+            {
+                <tr>
+                    <td>@item.i_name</td>
+                    <td>@item.i_description</td>
+                    <td>@item.i_quantity</td>
+                    <td>@item.i_price</td>
+                </tr>
+            }
+
+
+        </table>

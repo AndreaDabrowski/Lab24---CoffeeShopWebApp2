@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "AddItem";
+}
+
+<h2> Add Item</h2>
+
+@ViewBag.AddMessage
+
+<form action="/Home/AddItem" method="post" id="Form">
+    <!--onsubmit="validForm(this.form)">-->
+
+    <label class="control-label">
+        <input type="text" name="i_name" class="form-control" placeholder="Item Name" />
+    </label> <br />
+    <label class="control-label">
+        <input type="text" name="i_description" class="form-control" placeholder="Description" />
+    </label> <br />
+    <label class="control-label">
+        <input type="text" name="i_price" class="form-control" placeholder="Price" />
+    </label> <br />
+    <label class="control-label">
+        <input type="text" name="i_quantity" class="form-control" placeholder="Quantity" />
+    </label> <br />
+    <input type="submit" value="Add Item" class="btn-default" />
+</form>
