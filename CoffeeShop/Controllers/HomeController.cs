@@ -9,63 +9,53 @@ namespace CoffeeShop.Controllers
 {
     public class HomeController : Controller
     {
+        //returns index page with an instanceof the Coffee Shop Database (Item Table)
         public ActionResult Index()
         {
             CoffeeShopDBEntities ORM2 = new CoffeeShopDBEntities();
             ViewBag.SendDB = ORM2.Items.ToList<Item>();
-
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-        public ActionResult Admin()
-        {
-            CoffeeShopDBEntities AdminORM = new CoffeeShopDBEntities();
-            ViewBag.SendDB = AdminORM.Items.ToList<Item>();
-            //ViewBag.Message = "Your Admin page.";
-
-            return View();
-        }
         public ActionResult Register()
         {
             ViewBag.Message = "Your registration page.";
 
             return View();
         }
+
+        public ActionResult AddItem()
+        {
+            return View();
+        }
+
+        //returns to the Admin page with a new instance of the Coffee Shop Database (Item table)
+        public ActionResult Admin()
+        {
+            CoffeeShopDBEntities AdminORM = new CoffeeShopDBEntities();
+            ViewBag.SendItemDB = AdminORM.Items.ToList<Item>();
+            return View();
+        }
+
+        //adds New Users to Database
         public ActionResult AddNewUser(User newUser)
         {
             CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
-            ORM.Users.Add(newUser);//items references which table you want
+            ORM.Users.Add(newUser);//users references which table you want
             ORM.SaveChanges();
             ViewBag.SendDB = ORM.Items.ToList<Item>();
             ViewBag.AddedUser = "User was successfully added";
             return View("Index");
         }
+
+        //Adds new items to database
         public ActionResult AddNewItem(Item NewItem)//crud
         {
             CoffeeShopDBEntities AddORM = new CoffeeShopDBEntities();
             AddORM.Items.Add(NewItem);
             AddORM.SaveChanges();
-            //ViewBag.SendDB = AddORM.Items.ToList<Item>();
             ViewBag.AddedItem = "Item was successfully added";
             return RedirectToAction("Admin");
-            //return View("Admin");
-        }
-        public ActionResult AddItem()
-        {
-            return View();
         }
         public ActionResult DeleteItem(string i_name)//crud
         {
@@ -74,23 +64,17 @@ namespace CoffeeShop.Controllers
             DeleteORM.Items.Remove(ItemToDelete);
             DeleteORM.SaveChanges();
             ViewBag.Message = "Item Deleted!";
-
             return View("Admin");
         }
         public ActionResult EditItem(string i_name)//crud
         {
             CoffeeShopDBEntities EditORM = new CoffeeShopDBEntities();
             Item ItemToDelete = EditORM.Items.Find(i_name);
-            //CoffeeShopDBEntities UpdatedEditORM = new CoffeeShopDBEntities();
-            //Item UpdatedItem = UpdatedEditORM.Items
-            //ItemToDelete.i_name = "Hello";
-            //ItemToDelete.
             ViewBag.EditedItem = ItemToDelete;
-
-            //ViewBag.Message = "Edited!";
-            
             return View();
         }
+
+        //Saves Item to Database
         public ActionResult SaveEditItem(Item UpdatedItem)//crud
         {
             if (ModelState.IsValid)
@@ -101,30 +85,8 @@ namespace CoffeeShop.Controllers
                 SaveORM.SaveChanges();
                 return RedirectToAction("Admin");
             }
-            //ViewBag.Message = "Saved Item!";
             return View("Admin");
         }
     }
 }
-        /*public ActionResult AddUser(UserInput newUser)
-        {
-            // ToDo: validation!!!!!!
-
-            if (ModelState.IsValid)
-            {
-                // ToDo: Send the data to the DB
-
-                // confirmation, or maybe send to the Index page
-
-                //ViewData["ConfMessage"] = "Thanks " + newUser.FirstName;
-
-                ViewBag.ConfMessage = "You're in, " + newUser.FirstName + "!";
-
-                return View("Summary");
-            }
-
-            else
-            {
-                return View("Error");
-            }
-        }*/
+       

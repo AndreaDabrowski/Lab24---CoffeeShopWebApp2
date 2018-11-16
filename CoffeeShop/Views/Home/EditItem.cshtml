@@ -6,20 +6,20 @@
 <h2>Edit</h2>
 
 <form action="/Home/SaveEditItem" method="post" id="FormEdit">
-    <!--onsubmit="validForm(this.form)">-->
+    <!--Form takes in input to edit properties of Item Object-->
 
     <label class="control-label">
         <input type="text" name="i_name" class="form-control" placeholder="Item Name" disabled value="@ViewBag.EditedItem.i_name" />
-        <input type="hidden" name="i_name" value="@ViewBag.EditedItem.i_name"/>
+        <input type="hidden" name="i_name" value="@ViewBag.EditedItem.i_name" /> @*does not allow Primary Key editing*@
     </label> <br />
     <label class="control-label">
-        <input type="text" name="i_description" class="form-control" placeholder="Description" value="@ViewBag.EditedItem.i_description"/>
+        <input type="text" name="i_description" class="form-control" placeholder="Description" value="@ViewBag.EditedItem.i_description" />
     </label> <br />
     <label class="control-label">
-        <input type="text" name="i_price" class="form-control" placeholder="Price" Value="@ViewBag.EditedItem.i_price"/>
+        <input type="text" name="i_price" class="form-control" placeholder="Price" Value="@ViewBag.EditedItem.i_price" />
     </label> <br />
     <label class="control-label">
-        <input type="text" name="i_quantity" class="form-control" placeholder="Quantity" value="@ViewBag.EditedItem.i_quantity"/>
+        <input type="text" name="i_quantity" class="form-control" placeholder="Quantity" value="@ViewBag.EditedItem.i_quantity" />
     </label> <br />
     <input type="submit" value="Edit Item" class="btn-default" />
 </form>

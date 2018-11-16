@@ -11,10 +11,10 @@
 <h3>Sign up below:</h3>
 
 <h3>@ViewBag.AddedUser</h3><br />
-<form action="/Home/AddNewUser" method="post" id="Form"> <!--onsubmit="validForm(this.form)">-->
+<form action="/Home/AddNewUser" method="post" id="Form"> 
     
     <label class="control-label">
-        <input type="text" name="u_firstname" id="FirstName" class="form-control" placeholder="First Name" onchange="ValidateFirstName()" /><!-- pattern="^[a-ZA-Z][1,]$" title="Error Message! You dont need this!"-->
+        <input type="text" name="u_firstname" id="FirstName" class="form-control" placeholder="First Name" onchange="ValidateFirstName()" />
     </label> <br />
     <label class="control-label">
         <input type="text" name="u_lastname" id="LastName" class="form-control" placeholder="Last Name" onchange="ValidateLastName()"/>
@@ -44,7 +44,7 @@
     <fieldset>
         <section>
             <p>Excitement Meter:</p><span>Bummed</span><input type="range" name="Excitement" id="Excitement" class="form-control" /><span>Hyped</span>
-        </section><legend>Non-Text Fieldsets</legend>@*none are connected to anything yet*@
+        </section><legend>Non-Text Fieldsets</legend>@*Excitement bar not connected to anything yet*@
 
         Sign up for promotions?<input type="checkbox" name="u_promo" id="Promo" class="form-control" />
         What are you shopping for?<br />
@@ -54,7 +54,7 @@
         <input type="radio" name="u_preference" value="No Preference"> No Preference<br>
     </fieldset>
 
-    <input type="submit" onsubmit="return JSValidate()" value="Register!" class="btn-default" id="RegisterButton"/> <!--you can also put JS() reference here-->
+    <input type="submit" onsubmit="return JSValidate()" value="Register!" class="btn-default" id="RegisterButton"/>
 
 
 

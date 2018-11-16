@@ -14,6 +14,7 @@ namespace CoffeeShop.Models
     
     public partial class User
     {
+        
         public string u_firstname { get; set; }
         public string u_lastname { get; set; }
         public string u_email { get; set; }
