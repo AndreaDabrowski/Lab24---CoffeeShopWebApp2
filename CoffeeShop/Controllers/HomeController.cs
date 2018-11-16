@@ -64,7 +64,7 @@ namespace CoffeeShop.Controllers
             DeleteORM.Items.Remove(ItemToDelete);
             DeleteORM.SaveChanges();
             ViewBag.Message = "Item Deleted!";
-            return View("Admin");
+            return RedirectToAction("Admin");
         }
         public ActionResult EditItem(string i_name)//crud
         {
@@ -77,7 +77,7 @@ namespace CoffeeShop.Controllers
         //Saves Item to Database
         public ActionResult SaveEditItem(Item UpdatedItem)//crud
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
                 CoffeeShopDBEntities SaveORM = new CoffeeShopDBEntities();
                 Item ItemToUpdate = SaveORM.Items.Find(UpdatedItem.i_name);
