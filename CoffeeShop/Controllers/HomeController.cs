@@ -57,7 +57,9 @@ namespace CoffeeShop.Controllers
             ViewBag.AddedItem = "Item was successfully added";
             return RedirectToAction("Admin");
         }
-        public ActionResult DeleteItem(string i_name)//crud
+
+        //Deletes item from database
+        public ActionResult DeleteItem(string i_name)
         {
             CoffeeShopDBEntities DeleteORM = new CoffeeShopDBEntities();
             Item ItemToDelete = DeleteORM.Items.Find(i_name);
@@ -66,7 +68,9 @@ namespace CoffeeShop.Controllers
             ViewBag.Message = "Item Deleted!";
             return RedirectToAction("Admin");
         }
-        public ActionResult EditItem(string i_name)//crud
+
+        //Shows item to edit on edit view
+        public ActionResult EditItem(string i_name)
         {
             CoffeeShopDBEntities EditORM = new CoffeeShopDBEntities();
             Item ItemToDelete = EditORM.Items.Find(i_name);
@@ -74,8 +78,8 @@ namespace CoffeeShop.Controllers
             return View();
         }
 
-        //Saves Item to Database
-        public ActionResult SaveEditItem(Item UpdatedItem)//crud
+        //Saves edited Item to Database
+        public ActionResult SaveEditItem(Item UpdatedItem)
         {
             if (ModelState.IsValid) 
             {
